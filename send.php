@@ -1,6 +1,6 @@
 <?php
 
-$strFilePath = 'path/to/your/file.jpg';
+$strFilePath = 'image.png';
 
 $strUrl = 'https://httpbin.org/anything';
 
