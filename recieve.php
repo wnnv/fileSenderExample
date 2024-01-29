@@ -1,30 +1,21 @@
 <?php
 
-$strTmpName = $_FILES['file']['tmp_name']; // получаем временное имя файла
+$strTmpName = $_FILES['file']['tmp_name'];
 
-$strHash = $_POST['hash']; // получаем хэш из запроса
-
-
-$strSecret = 'test_secret_key'; // ваш секретный ключ или токен
+$strHash = $_POST['hash'];
 
 
-$mixFileData = file_get_contents($strTmpName); // читаем данные из файла
+$strSecret = 'test_secret_key';
 
-$strComputedHash = hash_hmac('sha256', $mixFileData, $strSecret); // вычисляем хэш полученных данных с помощью секретного ключа
+
+$mixFileData = file_get_contents($strTmpName);
+
+$strComputedHash = hash_hmac('sha256', $mixFileData, $strSecret);
 
 
 if ($strComputedHash === $strHash) {
-
-    // файл прошел проверку подлинности
     echo 'yay';
-    // ваш код для обработки файла
-
 } else {
-
-    // файл не прошел проверку подлинности
     echo 'fail';
-
-    // обработка ошибки
 }
-
 ?>
